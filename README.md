@@ -23,9 +23,9 @@ hourly_data = kc_water.get_usage_hourly()
 # Get a list of hourly readings
 daily_data = kc_water.get_usage_daily()
 
-logging.info("Last daily data: {}\n\n".format(daily_data[-1]))
-logging.info("Last hourly data: {}\n\n".format(hourly_data[-1]))
+print("Last daily data: {}\n\n".format(daily_data[-1]))
+print("Last hourly data: {}\n\n".format(hourly_data[-1]))
 
-logging.info("Last daily reading: {} gal for {}".format(daily_data[-1]["gallonsConsumption"], daily_data[-1]["readDate"]))
-logging.info("Last hourly reading: {} gal for {} {}".format(hourly_data[-1]["gallonsConsumption"], hourly_data[-1]["readDate"], hourly_data[-1]["readDateTime"]))
+print("Last daily reading: {} gal for {}".format(daily_data[-1]["gallonsConsumption"], daily_data[-1]["readDate"]))
+print("Last hourly reading: {} gal for {} {}".format(hourly_data[-1]["gallonsConsumption"], hourly_data[-1]["readDate"], hourly_data[-1]["readDateTime"]))
 ```
