@@ -1,10 +1,11 @@
 import json
 import requests
-from bs4 import BeautifulSoup
 from datetime import date, timedelta, datetime
 import logging
+from os import getenv
 
-log_level = logging.INFO
+
+log_level = logging.DEBUG
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s -  - %(message)s", level=log_level)
 
@@ -22,7 +23,7 @@ def valid_charge_date(history_obj):
         d = datetime.strptime(date_string, "%d-%b-%Y")
     except ValueError:
         d = datetime.strptime(date_string, "%m-%d-%Y")
-    valid_date = d.date() <= today
+    valid_date = d.date() < today
 
     if d.date() == today and history_obj['readDateTime']:
         time_split = history_obj['readDateTime'].split(" ")
@@ -138,8 +139,11 @@ class KCWater():
 
 
 def getCreds():
-    with open("../credentials.json", 'r') as f:
-        return json.loads(f.read())
+    return {
+        "username": getenv("KCWATER_USERNAME"),
+        "password": getenv("KCWATER_PASSWORD")
+    }
+
 
 
 if __name__ == "__main__":

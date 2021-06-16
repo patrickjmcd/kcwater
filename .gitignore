@@ -1,2 +1,4 @@
 *output.json
 *secondary.json
+.env
+venv/*
